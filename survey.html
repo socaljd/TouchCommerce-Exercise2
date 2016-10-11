@@ -1,0 +1,101 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Pre-Chat Survey</title>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="survey.css">
+		<script type="text/javascript" src="survey.js"></script>
+	</head>
+	<body>
+		<div id="container">
+			<div id="header">
+				<img id="bb_logo" src="assets/logo-best-brands.png">
+				<img id="btn_close" src="assets/btn-close.png">
+			</div>
+
+			<div id="content">
+				<h4>Which Mobile topic would you like help with?</h4>
+
+				<div class="input_row">
+					<label>Full Name:*</label>
+					<input type="text" id="full_name" name="full_name" placeholder="John Doe">
+					<div id="full_name_icon"></div>
+					<div class="error_div hide">
+						<img class="error_img" src="assets/icon-form-error.png"></img>
+					</div>
+					<div class="error_text">
+						<span class="right error hide">Full Name is a required field.</span>
+					</div>
+				</div>
+
+				<div class="input_row">
+					<label>Mobile Phone Number:*</label>
+					<input type="text" id="mobile" name="mobile" placeholder="ex: 123-123-1234">
+					<div id="mobile_icon"></div>
+					<div class="error_div hide">
+						<img class="error_img" src="assets/icon-form-error.png"></img>
+					</div>
+					<div class="error_text">
+						<span class="right error hide">Mobile number is a required field.</span>
+						<span class="right error hide">Please enter a valid phone number.</span>
+					</div>
+				</div>
+
+				<div class="input_row">
+					<label>State:*</label>
+					<select id="state" name="state" onchange="togglePurchaseField()">
+						<option value="">Select one</option>
+						<option value="AL">Alabama</option>
+						<option value="AK">Alaska</option>
+						<option value="AZ">Arizona</option>
+						<option value="AR">Arkansas</option>
+						<option value="CA">California</option>
+					</select>
+					<div class="error_div hide">
+						<img class="error_img" src="assets/icon-form-error.png"></img>
+					</div>
+					<div class="error_text">
+						<span class="right error hide">State is a required field.</span>
+					</div>
+				</div>
+
+				<div id="purchased_in_ca_container" class="input_row hide">
+					<label>Was your phone purchased in CA?*</label>
+					<select id="purchased_in_ca" name="purchased_in_ca">
+						<option value="">Select one</option>
+						<option value="1">Yes</option>
+						<option value="0">No</option>
+					</select>
+					<div class="error_div hide">
+						<img class="error_img" src="assets/icon-form-error.png"></img>
+					</div>
+					<div class="error_text">
+						<span class="right error hide">State is a required field.</span>
+					</div>
+				</div>
+
+				<div class="input_row">
+					<label>Describe your question:*</label>
+					<textarea id="question" name="question"></textarea>
+					<div class="error_div hide">
+						<img class="error_img" src="assets/icon-form-error.png"></img>
+					</div>
+					<div class="error_text">
+						<span class="right error hide">Description is a required field.</span>
+					</div>
+				</div>
+
+				<div class="right">
+					<button onclick="validateForm()">Start Chat</button>
+					<div class="right">
+						<span id="required_span_star">* </span><span id="required_span">Required Field</span>
+					</div>
+				</div>
+			</div>
+
+			<div id="footer">
+				<img id="tc_logo" src="assets/logo-tc.png">
+			</div>
+		</div>
+	</body>
+</html>

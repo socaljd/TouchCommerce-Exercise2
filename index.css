@@ -1,0 +1,243 @@
+body {
+	font-size: .8rem;
+	font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+}
+
+label {
+	display: block;
+	padding: 5px 0 5px;
+}
+
+h4 {
+	font-size: 1.2em;
+	line-height: 1.25;
+	margin-bottom: .7em;
+	font-weight: bold;
+}
+
+input[type="text"],
+select,
+textarea {
+	display: block;
+	padding: .375rem;
+	font-size: 1rem;
+	line-height: 1.5;
+	background-color: #fff;
+	border: .0625rem solid #ccc;
+	border-radius: .25rem;
+	width: 220px;
+	margin-bottom: 5px;
+}
+
+#state,
+#purchased_in_ca {
+	width: 283px;
+}
+
+#question {
+	width: 270px;
+}
+
+input[type="submit"],
+button {
+	width: 130px;
+	display: block;
+	margin: 10px 0 5px;
+	padding: .375rem 1rem;
+	font-size: 1rem;
+	color: white;
+	text-shadow: 1px 1px grey;
+	vertical-align: middle;
+	border: .0625rem solid transparent;
+	border-radius: .25rem;
+	background: url('assets/btn-send-idle.png');
+}
+
+input[type="submit"]:hover {
+	background: url('assets/btn-send-hover.png');
+}
+
+input[type="text"]:focus,
+select:focus,
+textarea:focus {
+	background-color: #DFF0D8;
+}
+
+span.error {
+	font-size: .8rem;
+	color: #FFAEAE;
+}
+
+input[type="text"].error,
+select.error,
+textarea.error {
+	border: 1px solid red;
+	background-color: #FED0D0;
+}
+
+#container {
+	position: relative;
+	height: 470px;
+	width: 300px;
+	border: 1px solid #AAA;
+	border-radius: 15px 0 0 0;
+}
+	
+#header {
+	height: 50px;
+	background-color: #333;
+	border-radius: 15px 0 0 0;
+	border-bottom: 5px solid #C5E800;
+}
+
+#content {
+	padding: 0 30px 0 30px;
+}
+
+#footer {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	height: 20px;
+	background-color: #E5E5E5;
+}
+
+#btn_close {
+	float: right;
+	height: 20px;
+	margin: 15px 15px;
+}
+
+#bb_logo {
+	width: 120px;
+	height: 60px;
+	padding-left: 15px;
+	margin-top: 10px;
+}
+
+#tc_logo {
+	height: 15px;
+	margin-left: 5px;
+}
+
+#required_span {
+	font-size: .8rem;
+	color: #909090;
+}
+
+#required_span_star {
+	color: red;
+}
+
+#full_name,
+#mobile {
+	padding-left: 55px;
+}
+
+#state,
+#purchased_in_ca {
+	height: 35px;
+}
+
+#full_name_icon {
+	position: absolute;
+	top: 30px;
+	left: 0;
+	width: 50px;
+	height: 30px;
+	margin-top: 1px;
+	padding-left: 55px;
+	background: url('assets/icon-form-avatar.png') no-repeat scroll 7px 7px;
+}
+
+#mobile_icon {
+	position: absolute;
+	top: 30px;
+	left: 0;
+	width: 50px;
+	height: 30px;
+	margin-top: 1px;
+	padding-left: 55px;
+	background: url('assets/icon-form-phone.png') no-repeat scroll 7px 7px;
+}
+
+.input_row {
+	width: 100%;
+	position: relative;
+	display: inline-block;
+}
+
+.error_div {
+	position: absolute;
+	top: 30px;
+	right: 0;
+	width: 50px;
+	height: 35px;
+}
+
+.error_img {
+	width: 15px;
+	padding: 10px 0 0 5px;
+}
+
+.error_text {
+	height: 15px;
+}
+
+.right {
+	float: right;
+}
+
+.hide {
+	display: none;
+}
+
+.row {
+	margin: 5px 0 5px;
+	padding: 5px 0 5px
+}
+
+.row:hover {
+	background-color: #f8ffe2;
+}
+
+#breadcrumbs {
+	padding-top: 30px;
+}
+
+#breadcrumbs a {
+	color: #88b30f;
+}
+
+.row a {
+	color: #000000;
+	text-decoration: none;
+	margin-left: 10px;
+}
+
+.row a:hover {
+	color: #88b30f;
+}
+
+.row:active {
+	background-color: #a8d42d;
+}
+
+.row div {
+	display: inline;
+	position: relative;
+	top: -10px
+}
+
+.row img {
+	padding: 0 10px 0 20px;
+}
+
+#breadcrumbs .active {
+	color: #aaaaaa;
+}
+
+.back_row {
+	margin-top: 20px;
+}
