@@ -1,0 +1,580 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Menu</title>
+		<meta charset="utf-8">
+		<style type="text/css">
+
+			body {
+				font-size: .8rem;
+				font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+			}
+
+			label {
+				display: block;
+				padding: 5px 0 5px;
+			}
+
+			h4 {
+				font-size: 1.2em;
+				line-height: 1.25;
+				margin-bottom: .3em;
+				font-weight: bold;
+			}
+
+			input[type="text"],
+			select {
+				height: 20px;
+			}
+
+			input[type="text"],
+			select,
+			textarea {
+				display: block;
+				padding: .375rem;
+				font-size: 1rem;
+				line-height: 1.5;
+				background-color: #fff;
+				border: .0625rem solid #ccc;
+				border-radius: .25rem;
+				width: 180px;
+				margin-bottom: 5px;
+				font-size: 14px;
+			}
+
+			#state,
+			#purchased_in_ca {
+				width: 243px;
+			}
+
+			#question {
+				width: 230px;
+			}
+
+			button {
+				width: 130px;
+				display: block;
+				margin: 0 0 5px;
+				padding: .375rem 1rem;
+				font-size: 1rem;
+				color: white;
+				text-shadow: 1px 1px grey;
+				vertical-align: middle;
+				border: .0625rem solid transparent;
+				border-radius: .25rem;
+				background: url('assets/btn-send-idle.png');
+			}
+
+			input[type="submit"]:hover {
+				background: url('assets/btn-send-hover.png');
+			}
+
+			input[type="text"]:focus,
+			select:focus,
+			textarea:focus {
+				background-color: #DFF0D8;
+			}
+
+			span.error {
+				font-size: .8rem;
+				color: #FFAEAE;
+			}
+
+			input[type="text"].error,
+			select.error,
+			textarea.error {
+				border: 1px solid red;
+				background-color: #FED0D0;
+			}
+
+			#container {
+				position: relative;
+				height: 470px;
+				width: 300px;
+				border: 1px solid #AAA;
+				border-radius: 15px 0 0 0;
+			}
+				
+			#header {
+				height: 50px;
+				background-color: #333;
+				border-radius: 15px 0 0 0;
+				border-bottom: 5px solid #C5E800;
+			}
+
+			#content {
+				padding: 0 30px 0 30px;
+			}
+
+			#footer {
+				position: absolute;
+				right: 0;
+				bottom: 0;
+				left: 0;
+				height: 20px;
+				background-color: #E5E5E5;
+			}
+
+			#btn_close {
+				float: right;
+				height: 20px;
+				margin: 15px 15px;
+			}
+
+			#bb_logo {
+				width: 120px;
+				height: 60px;
+				padding-left: 15px;
+				margin-top: 5px;
+			}
+
+			#tc_logo {
+				height: 15px;
+				margin-left: 5px;
+			}
+
+			#required_span {
+				font-size: .8rem;
+				color: #909090;
+			}
+
+			#required_span_star {
+				color: red;
+			}
+
+			#full_name,
+			#mobile {
+				padding-left: 55px;
+			}
+
+			#state,
+			#purchased_in_ca {
+				height: 35px;
+			}
+
+			#full_name_icon {
+				position: absolute;
+				top: 27px;
+				left: 0;
+				width: 50px;
+				height: 30px;
+				margin-top: 1px;
+				padding-left: 55px;
+				background: url('assets/icon-form-avatar.png') no-repeat scroll 7px 7px;
+			}
+
+			#mobile_icon {
+				position: absolute;
+				top: 28px;
+				left: 0;
+				width: 50px;
+				height: 30px;
+				margin-top: 1px;
+				padding-left: 55px;
+				background: url('assets/icon-form-phone.png') no-repeat scroll 7px 7px;
+			}
+
+			.input_row {
+				width: 100%;
+				position: relative;
+				display: inline-block;
+			}
+
+			.error_div {
+				position: absolute;
+				top: 30px;
+				right: 0;
+				width: 50px;
+				height: 35px;
+			}
+
+			.error_img {
+				width: 15px;
+				padding: 5px 0 0 5px;
+			}
+
+			.error_text {
+				height: 10px;
+			}
+
+			.right {
+				float: right;
+			}
+
+			.hide {
+				display: none;
+			}
+
+			#breadcrumbs {
+				padding-top: 30px;
+			}
+
+			#breadcrumbs a {
+				color: #88b30f;
+			}
+
+			.row {
+				margin: 5px 0 5px;
+				padding: 5px 0 5px
+			}
+
+			.row:hover {
+				background-color: #f8ffe2;
+			}
+
+			.row a {
+				color: #000000;
+				text-decoration: none;
+				margin-left: 10px;
+			}
+
+			.row a:hover {
+				color: #88b30f;
+			}
+
+			.row:active {
+				background-color: #a8d42d;
+			}
+
+			.row div {
+				display: inline;
+				position: relative;
+				top: -10px
+			}
+
+			.row img {
+				padding: 0 10px 0 20px;
+			}
+
+			#breadcrumbs .active {
+				color: #aaaaaa;
+			}
+
+			.back_row {
+				margin-top: 20px;
+			}
+		</style>
+		<script type="text/javascript">
+			function buildForm() {
+				var html = '';
+
+				html += '<div id="container">';
+					html += '<div id="header">';
+						html += '<img id="bb_logo" src="assets/logo-best-brands.png">';
+						html += '<img id="btn_close" src="assets/btn-close.png">';
+					html += '</div>';
+					html += '<div id="content">';
+						html += '<h4>Which Mobile topic would you like help with?</h4>';
+						html += '<div class="input_row">';
+							html += '<label>Full Name:*</label>';
+							html += '<input type="text" id="full_name" name="full_name" placeholder="John Doe">';
+							html += '<div id="full_name_icon"></div>';
+							html += '<div class="error_div hide">';
+								html += '<img class="error_img" src="assets/icon-form-error.png"></img>';
+							html += '</div>';
+							html += '<div class="error_text">';
+								html += '<span class="right error hide">Full Name is a required field.</span>';
+							html += '</div>';
+						html += '</div>';
+						html += '<div class="input_row">';
+							html += '<label>Mobile Phone Number:*</label>';
+							html += '<input type="text" id="mobile" name="mobile" placeholder="ex: 123-123-1234">';
+							html += '<div id="mobile_icon"></div>';
+							html += '<div class="error_div hide">';
+								html += '<img class="error_img" src="assets/icon-form-error.png"></img>';
+							html += '</div>';
+							html += '<div class="error_text">';
+								html += '<span class="right error hide">Mobile number is a required field.</span>';
+								html += '<span class="right error hide">Please enter a valid phone number.</span>';
+							html += '</div>';
+						html += '</div>';
+						html += '<div class="input_row">';
+							html += '<label>State:*</label>';
+							html += '<select id="state" name="state" onchange="togglePurchaseField()">';
+								html += '<option value="">Select one</option>';
+								html += '<option value="AL">Alabama</option>';
+								html += '<option value="AK">Alaska</option>';
+								html += '<option value="AZ">Arizona</option>';
+								html += '<option value="AR">Arkansas</option>';
+								html += '<option value="CA">California</option>';
+							html += '</select>';
+							html += '<div class="error_div hide">';
+								html += '<img class="error_img" src="assets/icon-form-error.png"></img>';
+							html += '</div>';
+							html += '<div class="error_text">';
+								html += '<span class="right error hide">State is a required field.</span>';
+							html += '</div>';
+						html += '</div>';
+						html += '<div id="purchased_in_ca_container" class="input_row hide">';
+							html += '<label>Was your phone purchased in CA?*</label>';
+							html += '<select id="purchased_in_ca" name="purchased_in_ca">';
+								html += '<option value="">Select one</option>';
+								html += '<option value="1">Yes</option>';
+								html += '<option value="0">No</option>';
+							html += '</select>';
+							html += '<div class="error_div hide">';
+								html += '<img class="error_img" src="assets/icon-form-error.png"></img>';
+							html += '</div>';
+							html += '<div class="error_text">';
+								html += '<span class="right error hide">State is a required field.</span>';
+							html += '</div>';
+						html += '</div>';
+						html += '<div class="input_row">';
+							html += '<label>Describe your question:*</label>';
+							html += '<textarea id="question" name="question"></textarea>';
+							html += '<div class="error_div hide">';
+								html += '<img class="error_img" src="assets/icon-form-error.png"></img>';
+							html += '</div>';
+							html += '<div class="error_text">';
+								html += '<span class="right error hide">Description is a required field.</span>';
+							html += '</div>';
+						html += '</div>';
+						html += '<div class="right">';
+							html += '<button onclick="validateForm()">Start Chat</button>';
+							html += '<div class="right">';
+								html += '<span id="required_span_star">* </span><span id="required_span">Required Field</span>';
+							html += '</div>';
+						html += '</div>';
+					html += '</div>';
+					html += '<div id="footer">';
+						html += '<img id="tc_logo" src="assets/logo-tc.png">';
+					html += '</div>';
+				html += '</div>';
+
+				document.getElementById('body').innerHTML = html;
+				document.getElementById('container').style.width = '300px';
+				document.getElementById('container').style.height = '625px';
+			}
+
+			function validateForm() {
+				var valid = true;
+				var el, error_div, error_span1, error_span2;
+
+				el = document.getElementById('full_name');
+				error_div = el.parentElement.children[3];
+				error_span1 = el.parentElement.children[4].children[0];
+				if (el.value === null || el.value === '') {
+					valid = false;
+					el.className = el.className.indexOf('error') === -1 ? 'error' : '';
+					if (el.className.indexOf('error') === -1) {
+						el.className = el.className+' error';
+					}
+					if (error_div.className.indexOf('hide') > -1) {
+						error_div.className = error_div.className.replace('hide', '');
+					}
+					if (error_span1.className.indexOf('hide') > -1) {
+						error_span1.className = error_span1.className.replace('hide', '');
+					}
+				} else {
+					el.className = '';
+					if (error_div.className.indexOf('hide') === -1) {
+						error_div.className = error_div.className+' hide';
+					}
+					if (error_span1.className.indexOf('hide') === -1) {
+						error_span1.className = error_span1.className+' hide';
+					}
+				}
+
+				el = document.getElementById('mobile');
+				error_div = el.parentElement.children[3];
+				error_span1 = el.parentElement.children[4].children[0];
+				error_span2 = el.parentElement.children[4].children[1];
+				if (el.value === null || el.value === '') {
+					valid = false;
+					el.className = el.className.indexOf('error') === -1 ? 'error' : '';
+					if (el.className.indexOf('error') === -1) {
+						el.className = el.className+' error';
+					}
+					if (error_div.className.indexOf('hide') > -1) {
+						error_div.className = error_div.className.replace('hide', '');
+					}
+					if (error_span1.className.indexOf('hide') > -1) {
+						error_span1.className = error_span1.className.replace('hide', '');
+					}
+					if (error_span2.className.indexOf('hide') === -1) {
+						error_span2.className = error_span2.className+' hide';
+					}
+				} else if (!el.value.match(/^\d{3}-\d{3}-\d{4}$/)) {
+					valid = false;
+					el.className = el.className.indexOf('error') === -1 ? 'error' : '';
+					if (el.className.indexOf('error') === -1) {
+						el.className = el.className+' error';
+					}
+					if (error_div.className.indexOf('hide') > -1) {
+						error_div.className = error_div.className.replace('hide', '');
+					}
+					if (error_span1.className.indexOf('hide') === -1) {
+						error_span1.className = error_span1.className+' hide';
+					}
+					if (error_span2.className.indexOf('hide') > -1) {
+						error_span2.className = error_span2.className.replace('hide', '');
+					}
+				} else {
+					el.className = '';
+					if (error_div.className.indexOf('hide') === -1) {
+						error_div.className = error_div.className+' hide';
+					}
+					if (error_span1.className.indexOf('hide') === -1) {
+						error_span1.className = error_span1.className+' hide';
+					}
+					if (error_span2.className.indexOf('hide') === -1) {
+						error_span2.className = error_span2.className+' hide';
+					}
+				}
+
+				el = document.getElementById('state');
+				error_div = el.parentElement.children[2];
+				error_span1 = el.parentElement.children[3].children[0];
+				if (el.value === null || el.value === '') {
+					valid = false;
+					el.className = el.className.indexOf('error') === -1 ? 'error' : '';
+					if (el.className.indexOf('error') === -1) {
+						el.className = el.className+' error';
+					}
+					if (error_div.className.indexOf('hide') > -1) {
+						error_div.className = error_div.className.replace('hide', '');
+					}
+					if (error_span1.className.indexOf('hide') > -1) {
+						error_span1.className = error_span1.className.replace('hide', '');
+					}
+				} else {
+					el.className = '';
+					if (error_div.className.indexOf('hide') === -1) {
+						error_div.className = error_div.className+' hide';
+					}
+					if (error_span1.className.indexOf('hide') === -1) {
+						error_span1.className = error_span1.className+' hide';
+					}
+				}
+				if (el.value == 'CA') {
+					el = document.getElementById('purchased_in_ca');
+					error_div = el.parentElement.children[2];
+					error_span1 = el.parentElement.children[3].children[0];
+					if (el.value == null || el.value == '') {
+						valid = false;
+						el.className = el.className.indexOf('error') === -1 ? 'error' : '';
+						if (el.className.indexOf('error') === -1) {
+							el.className = el.className+' error';
+						}
+						if (error_div.className.indexOf('hide') > -1) {
+							error_div.className = error_div.className.replace('hide', '');
+						}
+						if (error_span1.className.indexOf('hide') > -1) {
+							error_span1.className = error_span1.className.replace('hide', '');
+						}
+					} else {
+						el.className = '';
+						if (error_div.className.indexOf('hide') === -1) {
+							error_div.className = error_div.className+' hide';
+						}
+						if (error_span1.className.indexOf('hide') === -1) {
+							error_span1.className = error_span1.className+' hide';
+						}
+					}
+				}
+
+				el = document.getElementById('question');
+				error_div = el.parentElement.children[2];
+				error_span1 = el.parentElement.children[3].children[0];
+				if (el.value === null || el.value === '') {
+					valid = false;
+					el.className = el.className.indexOf('error') === -1 ? 'error' : '';
+					if (el.className.indexOf('error') === -1) {
+						el.className = el.className+' error';
+					}
+					if (error_div.className.indexOf('hide') > -1) {
+						error_div.className = error_div.className.replace('hide', '');
+					}
+					if (error_span1.className.indexOf('hide') > -1) {
+						error_span1.className = error_span1.className.replace('hide', '');
+					}
+				} else {
+					el.className = '';
+					if (error_div.className.indexOf('hide') === -1) {
+						error_div.className = error_div.className+' hide';
+					}
+					if (error_span1.className.indexOf('hide') === -1) {
+						error_span1.className = error_span1.className+' hide';
+					}
+				}
+
+				if (valid) {
+					el = document.getElementById('content');
+					el.innerHTML = '<h4>Congratulations!! You have reached the chat agent.</h4>';
+				}
+			}
+
+			function togglePurchaseField() {
+				var state = document.getElementById('state');
+				var container = document.getElementById('purchased_in_ca_container');
+				if (state.value === 'CA') {
+					if (state.className.indexOf('error') > -1) {
+						state.className = state.className.replace('error', '');
+					}
+					if (state.nextSibling.nextSibling.className.indexOf('hide') === -1) {
+						state.nextSibling.nextSibling.className = state.nextSibling.nextSibling.className+' hide';
+					}
+					container.className = container.className.replace(/hide/g, '');
+				} else {
+					container.className = container.className+' hide';
+				}
+			}
+		</script>
+	</head>
+	<body id="body">
+		<div id="container">
+			<div id="header">
+				<img id="bb_logo" src="assets/logo-best-brands.png">
+				<img id="btn_close" src="assets/btn-close.png">
+			</div>
+
+			<div id="content">
+				<div id="breadcrumbs">
+					<a>Home</a> / 
+					<a>Existing Service</a> /
+					<a class="active">Mobile</a>
+				</div>
+				<h4>Which Mobile topic would you like help with?</h4>
+			</div>
+
+			<div id="links">
+				<div class="row">
+					<a onclick="buildForm()">
+						<img src="assets/icon-billing.png">
+						<div>Billing and Payments</div>
+					</a>
+				</div>
+				<div class="row">
+					<a href="">
+						<img src="assets/icon-tech-support.png">
+						<div>Technical Support</div>
+					</a>
+				</div>
+				<div class="row">
+					<a href="">
+						<img src="assets/icon-login.png">
+						<div>Account Login Support</div>
+					</a>
+				</div>
+
+				<div class="row">
+					<a href="">
+						<img src="assets/icon-other.png">
+						<div>Other</div>
+					</a>
+				</div>
+
+				<div class="row back_row">
+					<a href="">
+						<img src="assets/icon-back-button.png">
+						<div>Back</div>
+					</a>
+				</div>
+			</div>
+
+			<div id="footer">
+				<img id="tc_logo" src="assets/logo-tc.png">
+			</div>
+		</div>
+	</body>
+</html>
